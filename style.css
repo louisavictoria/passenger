@@ -1,0 +1,316 @@
+:root{
+    --blue:#293B8B;
+    --orange:#F2B880;
+    --red:#D74B2A;
+    --navy:#293855;
+    --green:#667A56;
+    --black:#1A1A1A;
+    --light:#E6E6E6;
+    --white:#ffffff;
+    --overlay: rgba(0,0,0,0.35);
+}
+
+/* Helper classes */
+.text-navy { color: var(--navy) !important; }
+.text-red { color: var(--red) !important; }
+.text-green { color: var(--green) !important; }
+.font-weight-800 { font-weight: 800 !important; }
+.font-weight-700 { font-weight: 700 !important; }
+.icon-red { color: var(--red) !important; }
+
+
+* {box-sizing: border-box; font-family: 'Poppins', sans-serif}
+html,body {height: 100%}
+body{
+    margin: 0;
+    background: var(--light);
+    color: var(--black);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-top: 64px;    /* space for navbar */
+    padding-bottom: 84px; /* space for bottom nav */
+    overflow-x: hidden;
+}
+h1,h2,h3,h4,h5,h6 {font-weight: 700; color: var(--navy)}
+a {color: inherit; text-decoration: none}
+
+/* --- ANIMATIONS & TRANSITIONS --- */
+.animated-item { transition: all 0.15s ease-out; } 
+.animated-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); }
+
+/* NAVBAR */
+.navbar{
+    background: var(--blue);
+    height: 64px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+/* FIX: Tiyakin na ang background ng nav menu ay kulay blue sa mobile kapag naka-open */
+.navbar-collapse {
+    background-color: var(--blue);
+}
+/* FIX: INALIS ang default horizontal padding at margin ng navbar-collapse sa mobile */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding-bottom: 10px;
+        margin-left: -1rem; 
+        margin-right: -1rem; 
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+.navbar-brand{color: var(--white)!important; font-weight: 800; letter-spacing: 0.6px}
+.navbar .nav-link{color: rgba(255,255,255,0.95); font-weight: 600}
+.navbar .nav-link:hover, .navbar .nav-link.active{color: var(--orange)}
+
+/* HERO (WITH Overlay for Readability) */
+.hero-section{
+    position: relative;
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    border-bottom-left-radius: 0; 
+    border-bottom-right-radius: 0; 
+    
+    /* ADDED DARK OVERLAY via linear-gradient and image for readability */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('bus-bg.jpg'); 
+    
+    background-size: cover;
+    background-position: center center; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25); 
+}
+
+.hero-content{
+    position: relative;
+    z-index: 2;
+    padding: 18px 16px;
+    max-width: 980px;
+    width: 100%;
+}
+.hero-title{
+    color: var(--white);
+    font-size: 1.8rem; 
+    line-height: 1.12;
+    margin: 0 0 8px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.75); /* Increased shadow */
+    font-weight: 800;
+}
+.hero-sub {
+     color: var(--white); /* Changed to full white for better visibility */
+     font-weight: 500; 
+     margin-bottom: 20px;
+     text-shadow: 0 1px 4px rgba(0,0,0,0.75); /* Added shadow */
+}
+
+/* INPROVEMENT: Nilakihan ang max-width ng app container */
+.app-container{ 
+    padding:14px 14px 100px; /* Dinagdagan ang bottom padding */
+    max-width:1200px; 
+    margin:0 auto; 
+}
+
+/* BALANCE CARD (UPDATED: Mas malaking container at overlap) */
+.balance-card{
+    background: var(--orange);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    /* Mobile Overlap: Mas malaki pa */
+    margin: -60px auto 18px; 
+    position: relative;
+    z-index: 10;
+    max-width: 700px; /* Mas malaki na ang width sa mobile/default */
+}
+.balance-card .bal-left p{margin:0; font-weight: 600; color: var(--navy)}
+.balance-card .bal-left h2{
+    margin:0; 
+    color: var(--red); 
+    font-weight: 800; 
+    font-size: 1.6rem; /* Pinalakihan ang text size */
+}
+.btn-topup{background: var(--red); color: var(--white); border: none; border-radius: 10px; padding: 8px 14px; font-weight: 700}
+.btn-qr{background: var(--navy); color: var(--white); border: none; border-radius: 10px; padding: 8px 12px; font-weight: 700}
+.btn-qr i { font-size: 1.1rem; }
+
+
+/* CARD STYLE */
+.app-card{
+    background: var(--white);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    margin-bottom: 18px;
+}
+
+/* TOP-UP LAYOUT */
+.topup-grid{display:grid; grid-template-columns: 1fr; gap: 16px}
+.amount-buttons{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.amount-buttons button{
+    border-radius: 10px; 
+    padding: 8px 0; 
+    font-weight: 700; 
+    width: 100%;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+.amount-buttons button.active {
+    background: var(--orange) !important;
+    border-color: var(--orange) !important;
+}
+
+/* E-Wallet Buttons */
+.ewallet-buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 10px;
+    margin-bottom: 12px;
+}
+.ewallet-buttons button{
+    border: none;
+    border-radius: 10px;
+    padding: 10px 0;
+    font-weight: 700;
+    color: var(--white);
+    width: 100%;
+    box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.4); 
+    border-bottom: 3px solid rgba(0, 0, 0, 0.4); 
+    transition: all 0.1s ease-out;
+    border: 3px solid transparent; /* Added for active state */
+}
+.ewallet-buttons button:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
+    border-bottom: none;
+}
+.ewallet-buttons button.active {
+    border: 3px solid var(--orange); /* Highlight selected wallet */
+}
+.gcash{background: var(--blue)} 
+.bank{background: var(--black)} 
+.maya{background: var(--green)}
+
+.proceed-btn{
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 12px 0;
+    border-radius: 12px;
+    font-weight: 800;
+    width: 100%;
+    text-align: center;
+    margin-top: 12px;
+    transition: opacity 0.2s;
+}
+/* Style for disabled button */
+.proceed-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.proceed-btn.w-50 {margin-top: 0;} /* Overwrite margin in profile section */
+
+
+/* Transactions Style */
+.transactions p{
+    background: var(--light);
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: var(--navy); 
+    border-left: 5px solid var(--green);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.transactions p b { color: var(--black); font-weight: 700; }
+.transactions p span { color: var(--navy); font-weight: 600; }
+
+/* FARE PLANNER */
+.planner-card{
+    display:flex; 
+    flex-direction:column; 
+    gap:12px;
+    align-items: stretch; 
+}
+#map{
+    height:260px; 
+    border-radius:12px;
+    margin: 0; 
+    padding: 0;
+}
+
+/* PASSENGER TYPE BUTTONS */
+.passenger-type {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    gap: 8px;
+    padding-bottom: 6px;
+}
+.passenger-type button {
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 10px;
+    border: 2px solid var(--black);
+    background: var(--white);
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+.passenger-type button.active {
+    background: var(--blue);
+    color: var(--white);
+    border-color: var(--blue);
+}
+
+/* PROFILE */
+.profile-header{
+    background:linear-gradient(135deg,var(--blue),var(--navy));
+    color:var(--white);
+    text-align:center;padding:16px;border-radius:12px 12px 0 0;
+}
+.profile-header h5 {
+    color: var(--orange); 
+    font-weight: 800;
+}
+.avatar{width:68px;height:68px;border-radius:50%;background:var(--orange);color:var(--red);display:inline-flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:8px;box-shadow:0 6px 14px rgba(0,0,0,0.12)}
+.list-group-item{display:flex;justify-content:space-between;font-weight:600;border:none;padding:12px 14px;border-bottom:1px solid var(--light)}
+
+/* MODAL STYLES */
+.modal-header.bg-blue { background-color: var(--blue) !important; }
+.btn-close-white { filter: invert(1); }
+
+/* BOTTOM NAV (mobile) */
+.bottom-nav{
+    position:fixed;left:0;right:0;bottom:0;height:74px;background:var(--white);display:flex;justify-content:space-around;align-items:center;padding:8px 6px;border-top:1px solid #e6e6e6;z-index:999;
+    box-shadow:0 -6px 18px rgba(0,0,0,0.06);
+}
+.bottom-nav a{color:var(--navy);text-decoration:none;display:flex;flex-direction:column;align-items:center;font-size:0.8rem;gap:4px; transition: color 0.15s;}
+.bottom-nav a i{font-size:1.2rem}
+.bottom-nav a.active,.bottom-nav a:hover{color:var(--red)}
+
+/* DESKTOP ADJUSTMENTS (UPDATED: Mas malaking container at overlap) */
+@media(min-width:992px){
+    .hero-section{min-height:300px;}
+    .hero-title{font-size:2.1rem}
+    .app-container{padding:24px} 
+    .topup-grid{grid-template-columns:1fr 360px; gap:24px}
+    .planner-card{flex-direction:row}
+    #map{height:360px}
+    
+    /* Desktop Balance Card Overlap FIX */
+    .balance-card{
+        margin-top: -80px; /* Mas malaking overlap sa desktop */
+        margin-bottom: 24px;
+        max-width: 900px; /* Mas malaking width sa desktop */
+    }
+}
