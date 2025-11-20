@@ -1,0 +1,526 @@
+ /* Base Colors & Fonts from Passenger/Driver Apps */
+        :root {
+            --blue: #293B8B;
+            --orange: #F2B880;
+            --red: #D74B2A;
+            --navy: #293855;
+            --green: #667A56; /* Used for success/active status */
+            --black: #1A1A1A;
+            --light: #E6E6E6;
+            --white: #ffffff;
+            --card-bg: #ffffff;
+            --sidebar-bg: var(--navy);
+            --header-bg: var(--white);
+            --text-primary: var(--navy);
+            --text-secondary: #6c757d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* --- Custom Sidebar Styling --- */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            color: var(--white);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease; /* Modified: Removed width transition */
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        /* UPDATED: Sidebar Header for Logo and Brand Name */
+        .sidebar-header {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* NEW: System Administrator Text Style */
+        .system-admin-text {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+            margin-top: -5px;
+        }
+
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 8px;
+            transition: background-color 0.2s, color 0.2s;
+            font-weight: 500;
+            display: flex; /* Added for collapsed state icon centering */
+            align-items: center;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--blue); /* Highlight color */
+            color: var(--white) !important;
+            font-weight: 600;
+        }
+
+        .nav-link.active {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        /* NEW: Logout Button Style (Matches Image 2-7) */
+        .nav-link.logout-link {
+            background-color: var(--red);
+            color: var(--white) !important;
+            margin-top: 20px;
+        }
+        .nav-link.logout-link:hover {
+            background-color: #c04024;
+        }
+
+        /* --- Content Area Styling --- */
+        .content {
+            margin-left: 280px;
+            padding: 20px 30px;
+            transition: margin-left 0.3s ease; /* Modified: Removed width transition */
+            min-height: 100vh;;
+        }
+        
+        /* Removed: .content.shifted style for desktop collapsing */
+
+
+        /* --- Card Styling --- */
+        .dashboard-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            transition: transform 0.2s ease;
+            border-left: 5px solid transparent;
+            min-height: 100%;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+        
+        /* NEW: For smaller, more transactional cards */
+        .transaction-card {
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background-color: var(--white);
+        }
+
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--blue);
+            line-height: 1;
+        }
+
+        /* Color Borders for Cards */
+        .card-active { border-left-color: var(--green); }
+        .card-waiting { border-left-color: var(--orange); }
+        .card-maintenance { border-left-color: var(--red); }
+        .card-revenue { border-left-color: var(--blue); }
+        
+        /* NEW: Card Colors for Driver/Transaction Dashboards */
+        .card-earning { 
+            border-left-color: var(--green);
+            background-color: #e8f5e9; /* Light green background for earnings */
+        }
+        .card-expense { 
+            border-left-color: var(--red);
+            background-color: #ffebee; /* Light red background for expenses */
+        }
+        .card-net { 
+            border-left-color: var(--blue);
+            background-color: #e3f2fd; /* Light blue background for net profit */
+        }
+        /* Custom Text Color for metric-value in Reports */
+        .card-expense .metric-value {
+            color: var(--red);
+        }
+        .card-earning .metric-value {
+             color: var(--green);
+        }
+        .card-net .metric-value {
+             color: var(--blue);
+        }
+        /* Style for the Active Drivers card which uses default styling */
+        .active-drivers-card {
+            background-color: var(--card-bg);
+            border-left-color: var(--navy);
+        }
+
+
+        /* Chart container styling */
+        .chart-container {
+            height: 400px; /* Fixed height for charts */
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Table Styling */
+        .table-custom {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden; /* For rounded corners on the table */
+        }
+        .table-custom th {
+            background-color: var(--navy);
+            color: var(--white);
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        .table-custom td {
+            vertical-align: middle;
+        }
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: #f7f7f7;
+        }
+        
+
+/* DELETE or comment out this block to revert row spacing */
+.transaction-table tbody tr {
+    /* Use padding and transparent border for visual row separation */
+    padding: 10px 0; 
+    border-bottom: 8px solid var(--light); /* This created the large gap */
+    display: table-row;
+    background-color: var(--white); 
+}
+/* For the actual table cell content inside the row */
+.transaction-table tbody td {
+    padding-top: 5px; 
+    padding-bottom: 5px;
+}
+
+        /* NEW: For the specific transaction table in admin 2.jpg */
+        .transaction-table .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .status-completed { background-color: var(--green); }
+        .status-pending { background-color: var(--orange); }
+        .status-rejected { background-color: var(--red); }
+        .status-imported { background-color: var(--blue); }
+        
+        /* NEW: Create User Form Card (admin 4.png) */
+        .user-form-card {
+            max-width: 500px;
+            margin: 30px auto;
+            text-align: center;
+        }
+        .user-id-box {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+
+        /* Status Badges - kept from original */
+        .badge-active { background-color: var(--green); color: var(--white); }
+        .badge-waiting { background-color: var(--orange); color: var(--navy); }
+        .badge-offline { background-color: var(--red); color: var(--white); }
+
+        /* Responsive Breakpoint - kept from original */
+        @media (max-width: 991.98px) {
+            .sidebar {
+                width: 250px;
+                transform: translateX(-100%);
+                padding-top: 70px; /* Space for toggler in header */
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+                padding: 15px;
+            }
+
+            .content.shifted { /* Override shifted on mobile */
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .navbar-toggler {
+                display: block !important;
+            }
+
+            .nav-tabs-mobile {
+                display: block !important;
+                margin-bottom: 15px;
+            }
+        }
+
+        .navbar-admin {
+            background-color: var(--header-bg);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-custom-orange {
+            background-color: var(--orange);
+            color: var(--navy);
+            font-weight: 700;
+            border: none;
+            transition: background-color 0.2s;
+            border-radius: 8px;
+        }
+        .btn-custom-orange:hover {
+            background-color: #e3a872;
+            color: var(--navy);
+        }
+        
+        /* NEW: Button matching the image style */
+        .btn-custom-green {
+            background-color: var(--green);
+            color: var(--white);
+            font-weight: 700;
+            border: none;
+            transition: background-color 0.2s;
+            border-radius: 8px;
+        }
+        .btn-custom-green:hover {
+            background-color: #55684a;
+            color: var(--white);
+        }
+        
+        /* NEW: Button warning color for Edit/Refresh in All Users */
+         .btn-warning {
+            background-color: #ffc107 !important; /* Standard BS Warning Yellow */
+            color: var(--navy) !important;
+            font-weight: 600;
+            border: none;
+        }
+        .btn-warning:hover {
+            background-color: #e0a800 !important;
+            color: var(--navy) !important;
+        }
+        
+        /* NEW: Activity Logs Specific Styles (Matching image_c2efe7.jpg) */
+        .log-header-card {
+            background-color: var(--card-bg); /* Use white background */
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 15px 20px;
+            display: flex; /* For alignment */
+            align-items: center;
+            justify-content: space-between;
+        }
+        .log-header-card .metric-item {
+            text-align: center;
+            padding: 0 15px;
+            border-right: 1px solid var(--light);
+        }
+        .log-header-card .metric-item:last-child {
+            border-right: none;
+        }
+        .log-header-card .metric-value-h {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--blue);
+            line-height: 1;
+        }
+        .log-header-card .metric-text-h {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .log-login-badge {
+            background-color: var(--red); /* Red background for 'login' action */
+            color: var(--white);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .log-day-header {
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 14px 18px;                  /* Increased padding */
+            border-radius: 10px 10px ;        /* Softer rounding */
+            margin-top: 25px;                    /* Better spacing between groups */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            letter-spacing: .3px;
+        }
+        .log-day-header i {
+            margin-right: 6px;
+        }
+        .log-day-header .badge {
+            padding: 6px 10px;
+            font-size: .78rem;
+            border-radius: 6px;
+        }
+        .log-table-wrapper {
+            margin-top: 10px;                   /* Smaller overlap for cleaner join */
+            border: 1px solid #dcdcdc;
+            border-top: none;
+            border-radius: 0 0 10px 10px;        /* Softer rounding */
+            overflow: hidden;
+            background: var(--white);
+            margin-bottom: 25px;                 /* More spacing between sections */
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+        .log-table-wrapper table thead th {
+            background-color: var(--orange) !important;
+            color: var(--navy) !important;
+            font-weight: 700;
+        }
+
+      .log-table-wrapper table th,
+        .log-table-wrapper table td {
+            padding: 10px 14px !important;      
+            font-size: 0.85rem;
+        }
+
+        .log-table-wrapper table tbody tr:hover {
+            background-color: #f3f6ff;   
+        }
+        .log-day-header {
+            border-left: 5px solid var(--orange);
+        }
+
+        /* --- CHATBOT TICKETS STYLES --- */
+        .nav-link .badge {
+            font-size: 0.7rem;
+            padding: 4px 8px;
+        }
+
+        /* Ticket Summary Cards (Top Row) */
+        .ticket-summary-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 5px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .ticket-total { border-left-color: var(--navy); }
+        .ticket-pending { border-left-color: var(--orange); }
+        .ticket-progress { border-left-color: #0dcaf0; /* Cyan */ }
+        .ticket-resolved { border-left-color: var(--green); }
+
+        .ticket-icon-wrapper {
+            float: right;
+            opacity: 0.2;
+        }
+
+        /* Individual Ticket Item Styling */
+        .ticket-item-card {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .ticket-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ticket-body {
+            padding: 20px;
+        }
+
+        /* Chat Bubbles Area */
+        .chat-column-title {
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .user-msg-box {
+            background-color: #f8f9fa; /* Light Gray */
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 3px solid var(--blue);
+            font-size: 0.9rem;
+            height: 100%;
+        }
+
+        .bot-reply-box {
+            background-color: #fff8e1; /* Very Light Orange/Beige */
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 3px solid var(--orange);
+            font-size: 0.9rem;
+            height: 100%;
+        }
+
+        .ticket-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #f0f0f0;
+            background-color: #fff;
+            border-radius: 0 0 8px 8px;
+        }
+        /* --- Custom Create User Tab Styling --- */
+.user-form-card {
+    padding: 30px; /* Optional: Make the card padding consistent */
+}
+
+/* Style for the 'New User ID' box */
+.user-id-box {
+    background-color: var(--navy); /* Navy background */
+    color: var(--white);
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--orange); /* Orange border for highlight */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.user-id-box h4 {
+    color: var(--white); /* Ensure text remains white */
+    font-size: 1.25rem;
+}
+
+/* Style for the Add New User Button */
+.btn-custom-green {
+    background-color: var(--green);
+    color: var(--white);
+    border: none;
+    transition: background-color 0.2s;
+    padding: 12px 20px;
+}
+
+.btn-custom-green:hover {
+    background-color: #536449; /* Darker shade on hover */
+    color: var(--white);
+}
